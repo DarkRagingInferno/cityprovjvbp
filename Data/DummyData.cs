@@ -11,6 +11,12 @@ namespace SportsPlus.Data {
             modelBuilder.Entity<Player>().HasData (
                 Player.GetPlayers()
             );
+            modelBuilder.Entity<City>().HasData (
+                City.GetCities()
+            );
+            modelBuilder.Entity<Province>().HasData (
+                Province.GetProvinces()
+            );
         }
     }
 }

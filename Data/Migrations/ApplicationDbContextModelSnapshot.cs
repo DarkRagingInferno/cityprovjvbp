@@ -18,6 +18,69 @@ namespace SportsPlus.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("SportsPlus.Models.City", b =>
+                {
+                    b.Property<int>("CityId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CityName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Population")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Province")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProvinceCode")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("CityId");
+
+                    b.HasIndex("ProvinceCode");
+
+                    b.ToTable("Cities");
+
+                    b.HasData(
+                        new
+                        {
+                            CityId = 1,
+                            CityName = "Vancouver",
+                            Population = 1000000,
+                            Province = "British Columbia"
+                        },
+                        new
+                        {
+                            CityId = 2,
+                            CityName = "Surrey",
+                            Population = 500000,
+                            Province = "British Columbia"
+                        },
+                        new
+                        {
+                            CityId = 3,
+                            CityName = "Calgary",
+                            Population = 850000,
+                            Province = "Alberta"
+                        },
+                        new
+                        {
+                            CityId = 4,
+                            CityName = "Ottawa",
+                            Population = 2000000,
+                            Province = "Ontario"
+                        },
+                        new
+                        {
+                            CityId = 5,
+                            CityName = "Saskatoon",
+                            Population = 253000,
+                            Province = "Sasktchewan"
+                        });
+                });
+
             modelBuilder.Entity("SportsPlus.Models.Player", b =>
                 {
                     b.Property<int>("PlayerId")
@@ -82,6 +145,41 @@ namespace SportsPlus.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("SportsPlus.Models.Province", b =>
+                {
+                    b.Property<string>("ProvinceCode")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProvinceName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProvinceCode");
+
+                    b.ToTable("Provinces");
+
+                    b.HasData(
+                        new
+                        {
+                            ProvinceCode = "BC",
+                            ProvinceName = "British Columbia"
+                        },
+                        new
+                        {
+                            ProvinceCode = "ON",
+                            ProvinceName = "Ontario"
+                        },
+                        new
+                        {
+                            ProvinceCode = "SK",
+                            ProvinceName = "Saskatchewan"
+                        },
+                        new
+                        {
+                            ProvinceCode = "AB",
+                            ProvinceName = "Alberta"
+                        });
+                });
+
             modelBuilder.Entity("SportsPlus.Models.Team", b =>
                 {
                     b.Property<string>("TeamName")
@@ -123,6 +221,13 @@ namespace SportsPlus.Data.Migrations
                             City = "Toronto",
                             Country = "Canada"
                         });
+                });
+
+            modelBuilder.Entity("SportsPlus.Models.City", b =>
+                {
+                    b.HasOne("SportsPlus.Models.Province", null)
+                        .WithMany("Cities")
+                        .HasForeignKey("ProvinceCode");
                 });
 
             modelBuilder.Entity("SportsPlus.Models.Player", b =>
