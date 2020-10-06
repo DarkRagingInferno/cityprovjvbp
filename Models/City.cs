@@ -6,13 +6,11 @@ namespace SportsPlus.Models
 {
     public class City
     {
-        [Display (Name ="City ID")]
         public int CityId { get; set; }
         [Display (Name ="City Name")]
         public string CityName { get; set; }
         [Display (Name ="City Population")]
         public int Population { get; set; }
-        [Display (Name ="Province Abbreviation")]
         public string ProvinceCode { get; set; }
         public Province Province  { get; set; }
 
