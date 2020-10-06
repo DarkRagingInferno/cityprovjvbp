@@ -17,8 +17,8 @@ namespace SportsPlus.Data {
             builder.Entity<Team> ().ToTable ("Team");
             builder.Entity<Player> ().ToTable ("Player");
 
-            // builder.Entity<Province>().HasData(Province.GetProvinces());
-            // builder.Entity<City>().HasData(City.GetCities());
+            // builder.Entity<Province>().ToTable("Province");
+            // builder.Entity<City>().ToTable("City");
 
             builder.Seed();
         }

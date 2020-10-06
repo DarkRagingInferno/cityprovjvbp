@@ -46,6 +46,7 @@ namespace SportsPlus.Controllers
         // GET: Cities/Create
         public IActionResult Create()
         {
+            ViewBag.ListOfProvinces = getProvincesList();
             return View();
         }
 
@@ -148,6 +149,22 @@ namespace SportsPlus.Controllers
         private bool CityExists(int id)
         {
             return _context.Cities.Any(e => e.CityId == id);
+        }
+
+        private List<SelectListItem> getProvincesList() 
+        {
+            List<Province> provinceList = _context.Provinces.ToList();
+
+            List<SelectListItem> list = provinceList.ConvertAll( a =>
+            {
+                return new SelectListItem()
+                {
+                    Text     = a.ProvinceName,
+                    Value    = a.ProvinceName,
+                    Selected = false
+                };
+            });
+            return list;
         }
     }
 }
