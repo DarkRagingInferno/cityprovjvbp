@@ -10,6 +10,8 @@ namespace SportsPlus.Data {
         public ApplicationDbContext (DbContextOptions<ApplicationDbContext> options) : base (options) { }
 
         protected override void OnModelCreating (ModelBuilder builder) {
+            base.OnModelCreating(builder);
+
             builder.Entity<Player> ().Property (m => m.TeamName).IsRequired ();
 
             builder.Entity<Team> ().Property (p => p.TeamName).HasMaxLength (30);
