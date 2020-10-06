@@ -45,13 +45,13 @@ namespace SportsPlus.Models
                 new City {
                     CityId = 5,
                     CityName = "Edmonton",
-                    Population = 850000,
+                    Population = 500000,
                     ProvinceCode = "AB"
                 },
                 new City {
                     CityId = 6,
                     CityName = "Red Deer",
-                    Population = 850000,
+                    Population = 75000,
                     ProvinceCode = "AB"
                 },
                 new City {
@@ -63,13 +63,13 @@ namespace SportsPlus.Models
                 new City {
                     CityId = 8,
                     CityName = "Windsor",
-                    Population = 2000000,
+                    Population = 350000,
                     ProvinceCode = "ON"
                 },
                 new City {
                     CityId = 9,
                     CityName = "Toronto",
-                    Population = 2000000,
+                    Population = 900000,
                     ProvinceCode = "ON"
                 },
                 new City {
@@ -81,13 +81,13 @@ namespace SportsPlus.Models
                 new City {
                     CityId = 11,
                     CityName = "Regina",
-                    Population = 253000,
+                    Population = 117000,
                     ProvinceCode = "SK"
                 },
                 new City {
                     CityId = 12,
                     CityName = "Melford",
-                    Population = 253000,
+                    Population = 128000,
                     ProvinceCode = "SK"
                 }
             };

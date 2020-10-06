@@ -22,7 +22,6 @@ namespace SportsPlus.Data {
 
             builder.Seed();
         }
-
         public DbSet<Team> Teams { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<City> Cities { get; set; }
