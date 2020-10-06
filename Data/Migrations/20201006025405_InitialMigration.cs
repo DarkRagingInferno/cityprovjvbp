@@ -39,15 +39,15 @@ namespace SportsPlus.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CityName = table.Column<string>(nullable: true),
                     Population = table.Column<int>(nullable: false),
-                    Province = table.Column<string>(nullable: true),
-                    ProvinceCode = table.Column<string>(nullable: true)
+                    ProvinceCode = table.Column<string>(nullable: true),
+                    ProvinceCode1 = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cities", x => x.CityId);
                     table.ForeignKey(
-                        name: "FK_Cities_Provinces_ProvinceCode",
-                        column: x => x.ProvinceCode,
+                        name: "FK_Cities_Provinces_ProvinceCode1",
+                        column: x => x.ProvinceCode1,
                         principalTable: "Provinces",
                         principalColumn: "ProvinceCode",
                         onDelete: ReferentialAction.Restrict);
@@ -78,14 +78,21 @@ namespace SportsPlus.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Cities",
-                columns: new[] { "CityId", "CityName", "Population", "Province", "ProvinceCode" },
+                columns: new[] { "CityId", "CityName", "Population", "ProvinceCode", "ProvinceCode1" },
                 values: new object[,]
                 {
-                    { 1, "Vancouver", 1000000, "British Columbia", null },
-                    { 2, "Surrey", 500000, "British Columbia", null },
-                    { 3, "Calgary", 850000, "Alberta", null },
-                    { 4, "Ottawa", 2000000, "Ontario", null },
-                    { 5, "Saskatoon", 253000, "Sasktchewan", null }
+                    { 1, "Vancouver", 1000000, "BC", null },
+                    { 11, "Regina", 117000, "SK", null },
+                    { 10, "Saskatoon", 253000, "SK", null },
+                    { 9, "Toronto", 900000, "ON", null },
+                    { 8, "Windsor", 350000, "ON", null },
+                    { 7, "Ottawa", 2000000, "ON", null },
+                    { 12, "Melford", 128000, "SK", null },
+                    { 5, "Edmonton", 500000, "AB", null },
+                    { 4, "Calgary", 850000, "AB", null },
+                    { 3, "Burnaby", 60000, "BC", null },
+                    { 2, "Surrey", 700000, "BC", null },
+                    { 6, "Red Deer", 75000, "AB", null }
                 });
 
             migrationBuilder.InsertData(
@@ -122,9 +129,9 @@ namespace SportsPlus.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cities_ProvinceCode",
+                name: "IX_Cities_ProvinceCode1",
                 table: "Cities",
-                column: "ProvinceCode");
+                column: "ProvinceCode1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Player_TeamName1",
