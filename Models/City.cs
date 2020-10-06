@@ -6,10 +6,15 @@ namespace SportsPlus.Models
 {
     public class City
     {
+        [Display (Name ="City ID")]
         public int CityId { get; set; }
+        [Display (Name ="City Name")]
         public string CityName { get; set; }
+        [Display (Name ="City Population")]
         public int Population { get; set; }
-        public string Province  { get; set; }
+        [Display (Name ="Province Abbreviation")]
+        public string ProvinceCode { get; set; }
+        public Province Province  { get; set; }
 
         public static List<City> GetCities () {
             List<City> cities = new List<City> () {
@@ -17,31 +22,73 @@ namespace SportsPlus.Models
                     CityId = 1,
                     CityName = "Vancouver",
                     Population = 1000000,
-                    Province = "British Columbia"
+                    ProvinceCode = "BC"
                 },
                 new City {
                     CityId = 2,
                     CityName = "Surrey",
-                    Population = 500000,
-                    Province = "British Columbia"
+                    Population = 700000,
+                    ProvinceCode = "BC"
                 },
                 new City {
                     CityId = 3,
-                    CityName = "Calgary",
-                    Population = 850000,
-                    Province = "Alberta"
+                    CityName = "Burnaby",
+                    Population = 60000,
+                    ProvinceCode = "BC"
                 },
                 new City {
                     CityId = 4,
-                    CityName = "Ottawa",
-                    Population = 2000000,
-                    Province = "Ontario"
+                    CityName = "Calgary",
+                    Population = 850000,
+                    ProvinceCode = "AB"
                 },
                 new City {
                     CityId = 5,
+                    CityName = "Edmonton",
+                    Population = 850000,
+                    ProvinceCode = "AB"
+                },
+                new City {
+                    CityId = 6,
+                    CityName = "Red Deer",
+                    Population = 850000,
+                    ProvinceCode = "AB"
+                },
+                new City {
+                    CityId = 7,
+                    CityName = "Ottawa",
+                    Population = 2000000,
+                    ProvinceCode = "ON"
+                },
+                new City {
+                    CityId = 8,
+                    CityName = "Windsor",
+                    Population = 2000000,
+                    ProvinceCode = "ON"
+                },
+                new City {
+                    CityId = 9,
+                    CityName = "Toronto",
+                    Population = 2000000,
+                    ProvinceCode = "ON"
+                },
+                new City {
+                    CityId = 10,
                     CityName = "Saskatoon",
                     Population = 253000,
-                    Province = "Sasktchewan"
+                    ProvinceCode = "SK"
+                },
+                new City {
+                    CityId = 11,
+                    CityName = "Regina",
+                    Population = 253000,
+                    ProvinceCode = "SK"
+                },
+                new City {
+                    CityId = 12,
+                    CityName = "Melford",
+                    Population = 253000,
+                    ProvinceCode = "SK"
                 }
             };
             return cities;

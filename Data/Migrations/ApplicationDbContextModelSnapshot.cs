@@ -31,15 +31,15 @@ namespace SportsPlus.Data.Migrations
                     b.Property<int>("Population")
                         .HasColumnType("int");
 
-                    b.Property<string>("Province")
+                    b.Property<string>("ProvinceCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProvinceCode")
+                    b.Property<string>("ProvinceCode1")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("CityId");
 
-                    b.HasIndex("ProvinceCode");
+                    b.HasIndex("ProvinceCode1");
 
                     b.ToTable("Cities");
 
@@ -49,35 +49,84 @@ namespace SportsPlus.Data.Migrations
                             CityId = 1,
                             CityName = "Vancouver",
                             Population = 1000000,
-                            Province = "British Columbia"
+                            ProvinceCode = "BC"
                         },
                         new
                         {
                             CityId = 2,
                             CityName = "Surrey",
-                            Population = 500000,
-                            Province = "British Columbia"
+                            Population = 700000,
+                            ProvinceCode = "BC"
                         },
                         new
                         {
                             CityId = 3,
-                            CityName = "Calgary",
-                            Population = 850000,
-                            Province = "Alberta"
+                            CityName = "Burnaby",
+                            Population = 60000,
+                            ProvinceCode = "BC"
                         },
                         new
                         {
                             CityId = 4,
-                            CityName = "Ottawa",
-                            Population = 2000000,
-                            Province = "Ontario"
+                            CityName = "Calgary",
+                            Population = 850000,
+                            ProvinceCode = "AB"
                         },
                         new
                         {
                             CityId = 5,
+                            CityName = "Edmonton",
+                            Population = 850000,
+                            ProvinceCode = "AB"
+                        },
+                        new
+                        {
+                            CityId = 6,
+                            CityName = "Red Deer",
+                            Population = 850000,
+                            ProvinceCode = "AB"
+                        },
+                        new
+                        {
+                            CityId = 7,
+                            CityName = "Ottawa",
+                            Population = 2000000,
+                            ProvinceCode = "ON"
+                        },
+                        new
+                        {
+                            CityId = 8,
+                            CityName = "Windsor",
+                            Population = 2000000,
+                            ProvinceCode = "ON"
+                        },
+                        new
+                        {
+                            CityId = 9,
+                            CityName = "Toronto",
+                            Population = 2000000,
+                            ProvinceCode = "ON"
+                        },
+                        new
+                        {
+                            CityId = 10,
                             CityName = "Saskatoon",
                             Population = 253000,
-                            Province = "Sasktchewan"
+                            ProvinceCode = "SK"
+                        },
+                        new
+                        {
+                            CityId = 11,
+                            CityName = "Regina",
+                            Population = 253000,
+                            ProvinceCode = "SK"
+                        },
+                        new
+                        {
+                            CityId = 12,
+                            CityName = "Melford",
+                            Population = 253000,
+                            ProvinceCode = "SK"
                         });
                 });
 
@@ -225,9 +274,9 @@ namespace SportsPlus.Data.Migrations
 
             modelBuilder.Entity("SportsPlus.Models.City", b =>
                 {
-                    b.HasOne("SportsPlus.Models.Province", null)
+                    b.HasOne("SportsPlus.Models.Province", "Province")
                         .WithMany("Cities")
-                        .HasForeignKey("ProvinceCode");
+                        .HasForeignKey("ProvinceCode1");
                 });
 
             modelBuilder.Entity("SportsPlus.Models.Player", b =>

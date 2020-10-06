@@ -13,9 +13,12 @@ namespace SportsPlus.Data {
             builder.Entity<Player> ().Property (m => m.TeamName).IsRequired ();
 
             builder.Entity<Team> ().Property (p => p.TeamName).HasMaxLength (30);
-
+            
             builder.Entity<Team> ().ToTable ("Team");
             builder.Entity<Player> ().ToTable ("Player");
+
+            // builder.Entity<Province>().HasData(Province.GetProvinces());
+            // builder.Entity<City>().HasData(City.GetCities());
 
             builder.Seed();
         }
